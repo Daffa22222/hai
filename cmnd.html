@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Love Animation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Login container animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Heart pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Text animation */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Love animation for the text */
+        @keyframes loveAnimation {
+            0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+            25% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(0.9) rotate(-5deg); }
+            75% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* Sayang animation */
+        @keyframes sayangAnimation {
+            0% { transform: translateX(-50px); opacity: 0; }
+            20% { transform: translateX(20px) rotate(10deg); }
+            40% { transform: translateX(-10px) rotate(-5deg); }
+            60% { transform: translateX(5px) rotate(2deg); }
+            80% { transform: translateX(-2px) rotate(-1deg); }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .sayang-text {
+            animation: sayangAnimation 2s ease-out forwards;
+        }
+            0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+            25% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(0.9) rotate(-5deg); }
+            75% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .login-container {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .love-animation {
+            animation: loveAnimation 1.5s ease-out forwards;
+        }
+
+        .heart {
+            animation: pulse 1.5s infinite;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        .heartbeat-effect {
+            animation: pulse 0.8s infinite alternate;
+            display: inline-block;
+            transform-origin: center;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-100 to-purple-100 min-h-screen flex items-center justify-center p-4">
+    <div id="loginContainer" class="login-container bg-white rounded-xl shadow-2xl p-8 w-full max-w-md">
+        <div class="text-center mb-8">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/162c561f-d993-4baa-aa44-9f3705c80d47.png" alt="Heart logo in pink color with white outline" class="mx-auto mb-4 h-20 w-20 rounded-full bg-pink-500 p-2">
+            <h1 class="text-3xl font-bold text-gray-800">Welcome Back</h1>
+            <p class="text-gray-600 mt-2">Please login to see something special</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500">
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="password" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500">
+            </div>
+
+            <div>
+                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-all duration-300">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div id="loveContainer" class="hidden flex-col items-center justify-center text-center">
+        <div class="heart mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        
+        <div class="flex space-x-4">
+            <div class="love-animation text-5xl font-bold text-pink-600" style="animation-delay: 0.2s;">L</div>
+            <div class="love-animation text-5xl font-bold text-pink-600" style="animation-delay: 0.4s;">O</div>
+            <div class="love-animation text-5xl font-bold text-pink-600" style="animation-delay: 0.6s; transform-origin: center; animation: loveAnimation 1.5s ease-out forwards, pulse 2s infinite 1.5s;">❤</div>
+            <div class="love-animation text-5xl font-bold text-pink-600" style="animation-delay: 0.8s;">E</div>
+        </div>
+        
+        <div class="mt-8 floating">
+            <div class="love-animation text-3xl font-bold text-purple-600" style="animation-delay: 1.2s;">Y A Y A</div>
+        </div>
+
+        <div class="mt-8">
+            <div class="flex justify-center space-x-2 mt-6">
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 1.4s;">A</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 1.5s;">K</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 1.6s;">U</div>
+                <div class="ml-4"></div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 1.8s;">S</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 1.9s;">A</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.0s;">Y</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.1s;">A</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.2s;">N</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.3s;">G</div>
+                <div class="ml-4"></div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.5s;">Y</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.6s;">A</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.7s;">Y</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.8s;">A</div>
+                <div class="sayang-text text-4xl font-bold text-red-500" style="animation-delay: 2.9s;">A</div>
+            </div>
+            <div class="mt-4 flex justify-center">
+                <div class="love-animation text-4xl font-bold text-pink-600 mt-2" style="animation-delay: 3.1s;">♥ ♥ ♥</div>
+            </div>
+        </div>
+
+        <button id="backButton" class="mt-8 px-6 py-2 bg-pink-100 text-pink-600 rounded-lg hover:bg-pink-200 transition-all duration-300">
+            Back to Login
+        </button>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple validation
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email.trim() === '' || password.trim() === '') {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Show love animation
+            document.getElementById('loginContainer').classList.add('hidden');
+            document.getElementById('loveContainer').classList.remove('hidden');
+            
+            // Add floating effect to each letter
+            const letters = document.querySelectorAll('.love-animation');
+        });
+        
+        document.getElementById('backButton').addEventListener('click', function() {
+            document.getElementById('loginContainer').classList.remove('hidden');
+            document.getElementById('loveContainer').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
