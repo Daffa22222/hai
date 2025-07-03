@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motivasi Yaya</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .fade-enter { opacity: 0; transform: scale(0.96); }
+    .fade-leave { opacity: 1; transform: scale(1); }
+    .fade-enter-active, .fade-leave-active {
+      transition: all .25s ease;
+    }
+    .fade-leave-active { opacity: 0; transform: scale(1.04); }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <!-- 🔐 LOGIN -->
+  <section id="loginSection" class="w-full max-w-sm fade-enter-active">
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
+      <form id="loginForm">
+        <div class="mb-4">
+          <label for="username" class="block text-gray-600 mb-1">Username</label>
+          <input id="username" type="text"
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                 required>
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-gray-600 mb-1">Password</label>
+          <input id="password" type="password"
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                 required>
+        </div>
+        <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg">
+          Masuk
+        </button>
+      </form>
+      <p id="errorText" class="text-red-500 mt-4 text-sm text-center hidden">
+        Username atau password salah.
+      </p>
+    </div>
+  </section>
+
+  <!-- 🎛️ PILIHAN -->
+  <section id="pilihanSection" class="hidden fade-enter-active text-center">
+    <div class="bg-white rounded-xl p-8 shadow-md">
+      <h1 class="text-2xl font-semibold mb-6 text-gray-800">Pilih Salah Satu</h1>
+      <div class="space-y-4">
+        <button id="semangatBtn"
+                class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full text-lg">
+          Semangat 💪
+        </button><br>
+        <button id="lopuBtn"
+                class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full text-lg">
+          Lop U 💖
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💖 HALAMAN SEMANGAT -->
+  <section id="semangatSection" class="hidden fade-enter-active">
+    <div class="bg-white rounded-2xl shadow-lg p-10 text-center max-w-md">
+      <h1 class="text-3xl font-bold mb-4 text-pink-600">💖 Semangat Ya Yaya!</h1>
+      <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Walau hidup ini penuh dengan masalah yang tiada akhirnya, tapi kamu jangan patah semangat
+        untuk melanjutkan hidup.
+      </p>
+      <button onclick="toSection(pilihanSection)"
+              class="mt-4 bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-full">
+        ⬅ Kembali
+      </button>
+    </div>
+  </section>
+
+  <!-- 💌 HALAMAN LOP U -->
+  <section id="lopuSection" class="hidden fade-enter-active">
+    <div class="bg-white rounded-2xl shadow-lg p-10 text-center max-w-md">
+      <h1 class="text-3xl font-bold mb-4 text-red-500">💌 Lop U Yaya!</h1>
+      <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Yaya, asal kau tau...<br>
+        Aq sangat mencintai dan menyayangimu.<br>
+        Mwah~ 💋 Lop u sayank 💖
+      </p>
+      <button onclick="toSection(pilihanSection)"
+              class="mt-4 bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-full">
+        ⬅ Kembali
+      </button>
+    </div>
+  </section>
+
+  <!-- 🔧 Script -->
+  <script>
+    const loginSection     = document.getElementById('loginSection');
+    const pilihanSection   = document.getElementById('pilihanSection');
+    const semangatSection  = document.getElementById('semangatSection');
+    const lopuSection      = document.getElementById('lopuSection');
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username === 'admin' && password === '123456') {
+        toSection(pilihanSection);
+      } else {
+        document.getElementById('errorText').classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('semangatBtn').addEventListener('click', () => {
+      toSection(semangatSection);
+    });
+
+    document.getElementById('lopuBtn').addEventListener('click', () => {
+      toSection(lopuSection);
+    });
+
+    function toSection(target) {
+      [loginSection, pilihanSection, semangatSection, lopuSection].forEach(sec => {
+        if (sec === target) {
+          sec.classList.remove('hidden', 'fade-leave');
+          sec.classList.add('fade-enter');
+          void sec.offsetWidth;
+          sec.classList.remove('fade-enter');
+        } else if (!sec.classList.contains('hidden')) {
+          sec.classList.add('fade-leave');
+          sec.addEventListener('transitionend', () => sec.classList.add('hidden'), {once: true});
+        }
+      });
+    }
+  </script>
+</body>
+</html>
